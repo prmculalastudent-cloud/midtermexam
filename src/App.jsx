@@ -1,6 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 
+const ZERO_TALENT_MAP = {
+  "1": "1 - Being On Time",
+  "2": "2 - Making An Effort",
+  "3": "3 - Being High Energy",
+  "4": "4 - Having A Positive Attitude",
+  "5": "5 - Being Passionate",
+  "6": "6 - Using Good Body Language",
+  "7": "7 - Being Coachable",
+  "8": "8 - Doing A Little Extra",
+  "9": "9 - Being Prepared",
+  "0": "0 - Having A Strong Work Ethic",
+};
+
 function CalcDisplay({ dispValue }) {
   return <div className="display">{dispValue}</div>;
 }
@@ -14,13 +27,13 @@ function CalcButton({ buttonLabel, onClick, className = "" }) {
 }
 
 function App() {
-  const [disp, setDisp] = useState("0");
+  const [disp, setDisp] = useState("10 Things That Require Zero Talent");
   const [operand1, setOperand1] = useState(null);
   const [operand2, setOperand2] = useState(null);
   const [operation, setOperation] = useState(null);
 
   const clearHandler = () => {
-    setDisp("0");
+    setDisp("10 Things That Require Zero Talent");
     setOperand1(null);
     setOperand2(null);
     setOperation(null);
@@ -61,37 +74,41 @@ function App() {
 
   const numButtonClickHandler = (e) => {
     e.preventDefault();
-    const value = e.target.innerText;
+    const value = String(e.target.innerText).trim();
 
+    // Display 10 Things That Require Zero Talent items
+    if (ZERO_TALENT_MAP[value]) {
+      setDisp(ZERO_TALENT_MAP[value]);
+    }
+
+    // Preserve standard calculation logic
     if (operation === null) {
       if (operand1 === null) {
-        setDisp(value);
         setOperand1(value);
       } else {
-        const nextVal = operand1 + value;
-        setDisp(nextVal);
-        setOperand1(nextVal);
+        setOperand1(operand1 + value);
       }
     } else {
       if (operand2 === null) {
-        setDisp(value);
         setOperand2(value);
       } else {
-        const nextVal = operand2 + value;
-        setDisp(nextVal);
-        setOperand2(nextVal);
+        setOperand2(operand2 + value);
       }
     }
   };
 
   const showSurname = () => {
-    setDisp("Phillip Rae Culala");
+    setDisp("PHILLIP RAE CULALA");
+  };
+
+  const showSubj = () => {
+    setDisp("C-PCIT9");
   };
 
   return (
     <div className="App">
       <div className="Header">
-        Calculator of Phillip Rae Culala - IT3A
+        PHILLIP RAE CULALA - BSIT WMD 3A
         <div className="Calculator">
           <CalcDisplay dispValue={disp} />
           <div className="Keypad">
@@ -138,10 +155,15 @@ function App() {
               onClick={operationButtonClickHandler} 
               className="btn-op" 
             />
+            <CalcButton 
+              buttonLabel={"SUBJ"} 
+              onClick={showSubj} 
+              className="btn-op" 
+            />
           </div>
 
           <button className="surname" onClick={showSurname}>
-            CULALA
+            NAME
           </button>
         </div>
       </div>

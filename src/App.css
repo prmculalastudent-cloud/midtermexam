@@ -1,39 +1,28 @@
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f4f6f8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .Header {
-  font-weight: 600;
-  color: #333;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e293b;
+  width: 100%;
+  max-width: 360px;
 }
 
 .Calculator {
-  width: 320px;
-  background-color: #121316;
-  border-radius: 20px;
-  padding: 20px;
   margin-top: 15px;
+  background-color: #0f172a;
+  border-radius: 12px;
+  padding: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
@@ -41,103 +30,92 @@ body {
 }
 
 .display {
-  background-color: #73a973;
-  color: #ffffff;
-  font-size: 2.5rem;
+  background-color: #022c22;
+  color: #34d399;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.1rem;
   font-weight: bold;
+  padding: 15px;
+  border-radius: 6px;
   text-align: right;
-  padding: 15px 20px;
-  border-radius: 12px;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  word-break: break-all;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  min-height: 24px;
+  word-wrap: break-word;
+  border: 2px solid #065f46;
 }
 
 .Keypad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 10px;
 }
 
 .Keypad button {
-  height: 60px;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  background-color: #c084fc; 
+  background-color: #334155;
   color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 15px 5px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.1s ease, filter 0.15s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .Keypad button:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
+  background-color: #475569;
 }
 
 .Keypad button:active {
-  transform: translateY(0);
+  transform: scale(0.96);
 }
 
-.Keypad button.btn-clear {
-  background-color: #ef4444;
-  color: #ffffff;
+/* Span across full grid row for bottom equals button */
+.btn-wide {
+  grid-column: span 4;
 }
 
-.Keypad button.btn-equal {
-  background-color: #ffffff;
-  color: #121316;
+.btn-op {
+  background-color: #2563eb !important;
 }
 
-.Keypad button.btn-op {
-  background-color: #eab308;
-  color: #121316;
+.btn-op:hover {
+  background-color: #1d4ed8 !important;
+}
+
+.btn-clear {
+  background-color: #dc2626 !important;
+}
+
+.btn-clear:hover {
+  background-color: #b91c1c !important;
+}
+
+.btn-equal {
+  background-color: #16a34a !important;
+}
+
+.btn-equal:hover {
+  background-color: #15803d !important;
 }
 
 .surname {
   width: 100%;
-  padding: 10px;
+  background-color: #0d9488;
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.surname:hover {
-  opacity: 0.8;
-}
-
-.surname {
-  width: 100%;
+  border-radius: 6px;
   padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background-color: #2563eb; 
-  color: #ffffff;
-  font-weight: 700;
   font-size: 1rem;
+  font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: transform 0.1s ease, filter 0.15s ease;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .surname:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
+  background-color: #0f766e;
 }
 
 .surname:active {
-  transform: translateY(0);
+  transform: scale(0.97);
 }
